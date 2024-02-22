@@ -9,3 +9,5 @@
 - Intuitive navigation for seamless flow.
 - Neumorphic UI concept for a unique and modern look.
 - State management with GetX for reactive updates.
+
+![](assets/img/screen_shoots/details.jpg)
