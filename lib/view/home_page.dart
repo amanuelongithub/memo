@@ -21,7 +21,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return GetBuilder<HomeController>(
       builder: (_) {
         return GestureDetector(
@@ -338,13 +337,6 @@ class HomePage extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           )
-          // child: Icon(
-          //   Icons.add_outlined,
-          //   size: 18.sp,
-          //   color: Constants.clLable,
-          //   opticalSize: 3,
-          //   grade: 9,
-          // ),
           ),
     );
   }
