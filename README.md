@@ -9,6 +9,7 @@
 - Intuitive navigation for seamless flow.
 - Neumorphic UI concept for a unique and modern look.
 - State management with GetX for reactive updates.
+- *Light* and *Dark* mode
 
 <div style="display: flex; justify-content: center">
    <img src="assets/img/icon.png" width="10%" style=`margin: 0 10px`>
