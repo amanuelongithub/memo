@@ -10,4 +10,4 @@
 - Neumorphic UI concept for a unique and modern look.
 - State management with GetX for reactive updates.
 
-![](assets/img/screen_shoots/details.jpg)
+<img src="assets/img/screen_shoots/details.jpg" width:"100">
