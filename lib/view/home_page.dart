@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:memo/components/loading.dart';
 import 'package:memo/components/main_logo.dart';
 import 'package:memo/components/neumorphic_card.dart';
 import 'package:memo/controller/home_controlle.dart';
@@ -64,7 +63,11 @@ class HomePage extends StatelessWidget {
                             ]),
                       )),
               ),
-              _.isLoading ? const CircularProg() : const SizedBox(),
+              _.isLoading
+                  ? const CircularProgressIndicator(
+                      color: Constants.cdMaincolor,
+                    )
+                  : const SizedBox(),
             ],
           ),
         );
@@ -150,7 +153,9 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  appBar(BuildContext context,) {
+  appBar(
+    BuildContext context,
+  ) {
     final _ = Get.find<HomeController>();
     return PreferredSize(
       preferredSize: Size(double.infinity, 250.sp),
@@ -336,8 +341,7 @@ class HomePage extends StatelessWidget {
               color: Constants.clMaincolor,
               fontWeight: FontWeight.bold,
             ),
-          )
-          ),
+          )),
     );
   }
 }
