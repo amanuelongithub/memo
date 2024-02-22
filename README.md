@@ -9,5 +9,9 @@
 - Intuitive navigation for seamless flow.
 - Neumorphic UI concept for a unique and modern look.
 - State management with GetX for reactive updates.
-
-<img src="assets/img/screen_shoots/details.jpg" width="100">
+- 
+<div style="display: flex; justify-content: space-between">
+  <img src="assets/img/screen_shoots/details.jpg" width="30%" style=`margin: 0 10px`>
+  <img src="assets/img/screen_shoots/home.jpg" width="30%" style=`margin: 0 10px`>
+  <img src="assets/img/screen_shoots/setting.jpg" width="30%" style=`margin: 0 10px`>
+</div
