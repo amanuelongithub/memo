@@ -26,6 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final _ = Get.find<HomeController>();
     final inputBorder = OutlineInputBorder(
         borderSide: Divider.createBorderSide(context),
         borderRadius: BorderRadius.circular(10));
@@ -263,6 +264,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   appBar(BuildContext context, OutlineInputBorder inputBorder) {
+    final _ = Get.find<HomeController>();
     return PreferredSize(
       preferredSize: const Size(double.infinity, 110),
       child: GestureDetector(
@@ -272,6 +274,13 @@ class _SettingsPageState extends State<SettingsPage> {
             AppBar(
               toolbarHeight: 83.sp,
               leading: BackButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                    (route) => false,
+                  );
+                },
                 color: Get.find<ThemeController>().isDark()
                     ? Constants.cdLable
                     : Constants.clLable,

@@ -77,6 +77,6 @@ class Memo {
         MemoFields.description: desprecation,
         MemoFields.time: createdTime.toIso8601String(),
         MemoFields.lastUpdated:
-            lastUpdated == null ? null : lastUpdated!.toIso8601String(),
+            lastUpdated?.toIso8601String(),
       };
 }

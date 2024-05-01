@@ -5,7 +5,7 @@ import 'package:memo/components/constantes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeController extends GetxController {
-  ThemeMode themeMode = ThemeMode.dark;
+  ThemeMode themeMode = ThemeMode.dark.obs();
   final bool prefThem;
 // for onborading
   final controller = PageController();

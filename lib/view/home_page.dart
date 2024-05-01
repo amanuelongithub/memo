@@ -20,57 +20,57 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ThemeController>().obs;
     return GetBuilder<HomeController>(
       builder: (_) {
         return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: [
-              Scaffold(
-                appBar: appBar(context),
-                body: _.memos.isEmpty
-                    ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Lottie.asset(
-                              'assets/json/empty.json',
-                              repeat: true,
-                              height: 120,
-                              width: 120,
-                            ),
-                            const Text(
-                              "Empty Memo",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(203, 131, 131, 131)),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Center(
-                        child: GestureDetector(
-                        onTap: () {
-                          FocusScope.of(context).unfocus();
-                        },
-                        child: PageView(
-                            controller: _.pageController,
-                            onPageChanged: (index) => _.onPageChange(index),
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Stack(
+              children: [
+                Scaffold(
+                  appBar: appBar(context),
+                  body: _.memos.isEmpty
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              buildPage0(_),
-                              buildPage1(_),
-                              buildPage2(_)
-                            ]),
-                      )),
-              ),
-              _.isLoading
-                  ? const CircularProgressIndicator(
-                      color: Constants.cdMaincolor,
-                    )
-                  : const SizedBox(),
-            ],
-          ),
-        );
+                              Lottie.asset(
+                                'assets/json/empty.json',
+                                repeat: true,
+                                height: 120,
+                                width: 120,
+                              ),
+                              const Text(
+                                "Empty Memo",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color.fromARGB(203, 131, 131, 131)),
+                              ),
+                            ],
+                          ),
+                        )
+                      : Center(
+                          child: GestureDetector(
+                          onTap: () {
+                            FocusScope.of(context).unfocus();
+                          },
+                          child: PageView(
+                              controller: _.pageController,
+                              onPageChanged: (index) => _.onPageChange(index),
+                              children: [
+                                buildPage0(_),
+                                buildPage1(_),
+                                buildPage2(_)
+                              ]),
+                        )),
+                ),
+                _.isLoading
+                    ? const CircularProgressIndicator(
+                        color: Constants.cdMaincolor,
+                      )
+                    : const SizedBox(),
+              ],
+            ));
       },
     );
   }
@@ -157,6 +157,7 @@ class HomePage extends StatelessWidget {
     BuildContext context,
   ) {
     final _ = Get.find<HomeController>();
+    final themeController = Get.find<ThemeController>();
     return PreferredSize(
       preferredSize: Size(double.infinity, 250.sp),
       child: Column(
@@ -183,17 +184,18 @@ class HomePage extends StatelessWidget {
                       height: 30.h,
                       child: Center(
                         child: AnimatedText(
-                            text: Text(
-                              'Setting',
-                              style: TextStyle(
-                                color: Get.find<ThemeController>().isDark()
-                                    ? Constants.cdSeccolor
-                                    : Constants.clSeccolor,
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          text: Text(
+                            'Setting',
+                            style: TextStyle(
+                              color: themeController.themeMode == ThemeMode.dark
+                                  ? Constants.cdSeccolor
+                                  : Constants.clSeccolor,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.bold,
                             ),
-                            duration: 800),
+                          ),
+                          duration: 800,
+                        ),
                       ),
                     ),
                   )

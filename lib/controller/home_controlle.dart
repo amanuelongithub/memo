@@ -12,6 +12,7 @@ class HomeController extends GetxController {
   TextEditingController desccontroller = TextEditingController();
   PageController pageController = PageController();
 
+
   List<Memo> memos = [];
   List<Memo> filteredMemos = [];
   Memo? memo;

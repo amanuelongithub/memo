@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     Get.put(HomeController());
     Get.put(ThemeController(prefThem: widget.themeData));
-
+   final _ = Get.find<HomeController>();
     return GetBuilder<ThemeController>(builder: (_) {
       final currentTheme = _.themeMode;
       return ScreenUtilInit(
@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
               MediaQuery.of(context).size.height),
           builder: (context, child) {
             return GetMaterialApp(
+            
               navigatorKey: navigatorKey,
               debugShowCheckedModeBanner: false,
               themeMode: currentTheme,
