@@ -14,64 +14,79 @@ import '../components/memo_card.dart';
 import '../controller/theme_controller.dart';
 import '../model/memo.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
   static String route = 'home-page';
+  Color? backgroundColor;
+
+   background() {
+    if (Get.find<ThemeController>().isDark()) {
+      backgroundColor = Constants.cdbg;
+      return backgroundColor;
+    } else {
+      backgroundColor = Constants.clbg;
+      return backgroundColor;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      builder: (_) {
-        return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: [
-              Scaffold(
-                appBar: appBar(context),
-                body: _.memos.isEmpty
-                    ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Lottie.asset(
-                              'assets/json/empty.json',
-                              repeat: true,
-                              height: 120,
-                              width: 120,
-                            ),
-                            const Text(
-                              "Empty Memo",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(203, 131, 131, 131)),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Center(
-                        child: GestureDetector(
-                        onTap: () {
-                          FocusScope.of(context).unfocus();
-                        },
-                        child: PageView(
-                            controller: _.pageController,
-                            onPageChanged: (index) => _.onPageChange(index),
+    return Scaffold(
+      backgroundColor: background(),
+      body: GetBuilder<HomeController>(
+        builder: (_) {
+          return GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Stack(
+              children: [
+                Scaffold(
+                  appBar: appBar(context),
+                  body: _.memos.isEmpty
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              buildPage0(_),
-                              buildPage1(_),
-                              buildPage2(_)
-                            ]),
-                      )),
-              ),
-              _.isLoading
-                  ? const CircularProgressIndicator(
-                      color: Constants.cdMaincolor,
-                    )
-                  : const SizedBox(),
-            ],
-          ),
-        );
-      },
+                              Lottie.asset(
+                                'assets/json/empty.json',
+                                repeat: true,
+                                height: 120,
+                                width: 120,
+                              ),
+                              const Text(
+                                "Empty Memo",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color.fromARGB(203, 131, 131, 131)),
+                              ),
+                            ],
+                          ),
+                        )
+                      : Center(
+                          child: GestureDetector(
+                          onTap: () {
+                            FocusScope.of(context).unfocus();
+                          },
+                          child: PageView(
+                              controller: _.pageController,
+                              onPageChanged: (index) => _.onPageChange(index),
+                              children: [
+                                buildPage0(_),
+                                buildPage1(_),
+                                buildPage2(_)
+                              ]),
+                        )),
+                ),
+                _.isLoading
+                    ? const CircularProgressIndicator(
+                        color: Constants.cdMaincolor,
+                      )
+                    : const SizedBox(),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 

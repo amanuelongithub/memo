@@ -10,7 +10,7 @@ Map<String, WidgetBuilder> getRoutes() {
   return {
     OnBoardingPage.route: (context) => const OnBoardingPage(),
     SplashPage.route: (context) => const SplashPage(),
-    HomePage.route: (context) => const HomePage(),
+    HomePage.route: (context) =>  HomePage(),
     AddPage.route: (context) => const AddPage(),
     DetailPage.route: (context) => const DetailPage(),
     SettingsPage.route: (context) => const SettingsPage(),

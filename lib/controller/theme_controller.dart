@@ -44,7 +44,9 @@ class ThemeController extends GetxController {
 class MyThemes {
   static final darkTheme = ThemeData(
     fontFamily: 'Quicksand',
-    scaffoldBackgroundColor: const Color.fromARGB(255, 37, 37, 37),
+    scaffoldBackgroundColor:Constants.cdbg,
+    // scaffoldBackgroundColor: const Color.fromARGB(255, 37, 37, 37),
+
     colorScheme: const ColorScheme.light().copyWith(
       primary: Constants.clMaincolor,
       surfaceTint: Colors.transparent,
